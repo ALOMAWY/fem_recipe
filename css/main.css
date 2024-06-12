@@ -1,0 +1,242 @@
+:root {
+  --primary-nutmeg: hsl(14, 45%, 36%);
+  --primary-dark-raspberry: hsl(332, 51%, 32%);
+  --white: hsl(0, 0%, 100%);
+  --rose-white: hsl(330, 100%, 98%);
+  --eggshell: hsl(30, 54%, 90%);
+  --light-grey: hsl(30, 18%, 87%);
+  --wenge-brown: hsl(30, 10%, 34%);
+  --dark-charcoal: hsl(24, 5%, 18%);
+  --light-weight: 400;
+  --medium-weight: 600;
+  --bold-weight: 700;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--eggshell);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Outfit", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  box-sizing: border-box;
+  transition: 0.3s;
+  letter-spacing: 1px;
+  line-height: 1.6;
+}
+
+html {
+  font-size: 16px;
+}
+p {
+  color: var(--wenge-brown);
+  font-size: 1rem;
+}
+
+.container {
+  background-color: var(--white);
+  width: 790px;
+  border-radius: 15px;
+  .image {
+    padding: 2.5rem 2.5rem 0;
+
+    img {
+      width: 100%;
+      border-radius: 10px;
+      /* margin: 2.5rem; */
+    }
+  }
+  .details {
+    padding: 0 2.5rem 2.5rem;
+
+    h1.card-title {
+      margin: 1rem 0;
+      font-weight: var(--light-weight);
+      font-family: "Young Serif", serif;
+      font-size: 2.3rem;
+    }
+
+    p.description {
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    h2.title {
+      font-size: 1.7rem;
+      color: var(--primary-nutmeg);
+      margin-bottom: 1rem;
+      font-family: "Young Serif", serif;
+      font-weight: var(--light-weight);
+    }
+
+    li::before {
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .preparation-rapport-list {
+      background-color: var(--rose-white);
+      border-radius: 12px;
+      padding: 2rem;
+      margin: 1rem;
+
+      .title {
+        color: var(--primary-dark-raspberry);
+        font-weight: var(--bold-weight);
+        margin-bottom: 1rem;
+      }
+      ul {
+        display: flex;
+        flex-direction: column;
+        gap: 0.8rem;
+        li {
+          display: flex;
+          gap: 5px;
+          padding-left: 2rem;
+          position: relative;
+
+          p {
+            font-weight: var(--medium-weight);
+            font-size: 1rem;
+
+            span.bold-title {
+              font-weight: var(--bold-weight);
+              font-size: 1rem;
+              padding-right: 5px;
+            }
+          }
+        }
+        li::before {
+          content: "";
+          width: 7px;
+          height: 7px;
+          background-color: var(--primary-dark-raspberry);
+          border-radius: 50%;
+        }
+      }
+    }
+  }
+
+  .ingredients {
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--light-grey);
+    margin-bottom: 1.5rem;
+
+    .ingredients-list {
+      padding-left: 2.4rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+
+      li {
+        list-style: none;
+        position: relative;
+      }
+
+      li::before {
+        content: "";
+        width: 5px;
+        height: 5px;
+        background-color: var(--primary-nutmeg);
+        border-radius: 50%;
+        left: -2rem;
+      }
+    }
+  }
+
+  .instructions {
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--light-grey);
+    margin-bottom: 1.5rem;
+    ol {
+      li {
+        counter-increment: li-number;
+        display: flex;
+        margin-bottom: 0.6rem;
+        padding-left: 2rem;
+        position: relative;
+
+        p {
+          span.bold-text {
+            font-weight: var(--bold-weight);
+          }
+        }
+      }
+
+      li::before {
+        content: counter(li-number) ".";
+        font-weight: var(--bold-weight);
+        color: var(--primary-nutmeg);
+        top: 0;
+        transform: translateY(0);
+      }
+    }
+  }
+  .nutrition {
+    > p {
+      margin: 1rem 0;
+    }
+    .nutrition-list {
+      display: flex;
+      flex-direction: column;
+
+      .nutrition-item {
+        padding: 0.6rem;
+        display: flex;
+        align-items: center;
+
+        > * {
+          width: 50%;
+        }
+        .nutrition-key {
+          font-weight: var(--medium-weight);
+          color: var(--wenge-brown);
+        }
+        .value {
+          font-weight: var(--bold-weight);
+          color: var(--primary-nutmeg);
+        }
+      }
+      .nutrition-item:not(.nutrition-item:last-child) {
+        border-bottom: 1px solid var(--light-grey);
+      }
+    }
+  }
+}
+
+/* Mobile View */
+
+@media (max-width: 375px) {
+  body {
+    display: block;
+    overflow-x: hidden;
+    max-width: 100%;
+  }
+
+  .container {
+    max-width: 100%;
+
+    .image {
+      padding: 0;
+      img {
+        border-radius: 0;
+      }
+    }
+
+    .details {
+      padding: 0 1.5rem 1.5rem;
+
+      .preparation-rapport-list {
+        padding: 2rem;
+      }
+    }
+  }
+}
